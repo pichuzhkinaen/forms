@@ -1,81 +1,49 @@
-extends layout.pug
+include mixins
 
-block variables
-	- var pageTitle = "Главная"
+doctype html
+html(lang="ru")
+	head 
+		block head
+			meta(name='viewport', content='width=device-width, initial-scale=1')
+			meta(charset="UTF-8")
+			title #{pageTitle}
+			link(href="styles/main.min.css?v="+ versionFiles, rel="stylesheet")
+			
 
-		
-block content
-	div.content__wrapper#home-wrapper
-		section.content__section.content__section_type_main.content__section_type_display.main#main
-			div.container
-				div.main__wrapper
-					div.main__info
-						div.main__text
-							h1.main__title KOMPLEX INFO
-							p.main__subtitle Мы создаем продукт, который работает #[br]на процветание Вашего бизнеса
-						div.main__detail
-							div.main__detail-inner
-								p.main__description Работайте над задачами, а проблемы мы возьмем на себя
-								a.main__button.button(href="about-us.html") Подробнее
-					div.main__background-image
-						img.main__image(src="images/main-photo.jpg" alt="Задний фон")
-					div.main__social
-						a.main__link(href="https://www.facebook.com/KomplexInfo" target="_blank") @KomplexInfo
-		section.content__section.content__section_type_services.home-services#home-services
-			div.container
-				div.home-services__wrapper
-					h2.home-services__title ЧЕМ МЫ ЗАНИМАЕМСЯ
-					div.home-services__wrapper-carousel-small
-						div.home-services__carousel-small.carousel-small
-							each item, key in slide
-								div.carousel-small__item
-									img.carousel-small__image(src=`images/slide${(key!==4?key:1) + 1}-small.jpg` alt=item.alt)
-									h2(class="carousel-small__title")=item.title
-					div.home-services__wrapper-carousel-big
-						div.home-services__carousel-big.carousel-big
-							each item, key in slide
-								div
-									div.carousel-big__item
-										div.carousel-big__wrapper-image
-											div.carousel-big__image-block(class=key===0?'visible':'')
-												img.carousel-big__image(src=`images/slide${(key!==4?key:1) + 1}.jpg` alt=item.alt)
-										div.carousel-big__inner
-											div.carousel-big__wrapper-text.text-block
-												h2(class="carousel-big__title")=item.title
-												p=item.descr
-											a(class="button carousel-big__button" href=item.link) Подробнее
-						div.navigation
-							div.navigation__numbers
-								span.navigation__number(id='first-numbers') 01
-								div.navigation__delimiter
-								span.navigation__number(id='last-numbers') 
-							div.navigation__line
-								div.navigation__main-line
-								div.navigation__loading
-							div.navigation__arrows(id='slider-arrows')
-		section.content__section.content__section_type_result.result#result
-			div.container
-				div.text-block
-					h2.result__title МЫ НАЦЕЛЕНЫ НА РЕЗУЛЬТАТ
-					p.result__description С самого начала работы главная задача «Комплекс-Инфо» – разрабатывать и внедрять#[br]качественное программное обеспечение, которое отвечает задачам и развивает бизнес наших#[br]клиентов.
-				div.result__inner
-					div.result__block
-						div.result__item-top
-							span.result__number 14
-								span.result__unit лет
-							p.result__text на рынке информационных услуг
-						div.result__item-bottom.text-block
-							p “Комплекс-Инфо” - стабильная и процветающая компания. С 2006 года результативно работаем на рынке информационных технологий Нижнего Новгорода.
-					div.result__block
-						div.result__item-top
-							span.result__number 10
-								span.result__unit лет
-							p.result__text российского и зарубежного партнерства
-						div.result__item-bottom.text-block
-							p За это время нашими клиентами стали: Правительство Нижегородской области, Нижегородская торгово-промышленная палата, «Ростелеком», Microsoft Partner, «Каркас-Монолит», «VIP Технологии».
-					div.result__block
-						div.result__item-top
-							span.result__number >100
-							p.result__text успешных проектов
-						div.result__item-bottom.text-block
-							p От прошивки устройств до разработки встроенных приложений и создания оптимизированных программно- аппаратных комплексов различного уровня сложности.
+	body
+		div.wrapper
+			form#form.form(action="")
+				div.form__group
+					label.form__input-label(for="name") Name
+					input.form__input(type="text" id="name" name="name" placeholder="Jon Bold")
+				div.form__group
+					label.form__input-label(for="email") Email
+					input.form__input(type="email" id="email" name="email" placeholder="email@email.com")
+				div.form__group
+					label.form__input-label(for="phone") Phone
+					input.form__input(type="tel" id="phone" name="phone" placeholder="+7 (___) ___ - __ - __")
+				div.form__group
+					span.form__group-title checkbox
+					div.form__checkbox-group
+						label.form__input-label(for="checkbox") option-1
+						input.form__input(type="checkbox" id="checkbox" name="option-1" value="option-1")
+					div.form__checkbox-group
+						label.form__input-label(for="checkbox") option-2
+						input.form__input(type="checkbox" id="checkbox" name="option-2" value="option-2")
+					div.form__checkbox-group
+						label.form__input-label(for="checkbox") option-3
+						input.form__input(type="checkbox" id="checkbox" name="option-2" value="option-3")
+				div.form__group
+					span.form__group-title Radio
+					div.form__radio-group
+						label.form__input-label(for="radio") option-1
+						input.form__input(type="radio" id="radio" name="option-1" value="option-1")
+					div.form__radio-group
+						label.form__input-label(for="radio") option-2
+						input.form__input(type="radio" id="checkbox" name="option-2" value="option-2")
+					div.form__radio-group
+						label.form__input-label(for="radio") option-3
+						input.form__input(type="radio" id="radio" name="option-2" value="option-3")
+
+		block scripts
+			script(src="scripts/main.min.js?v=" + versionFiles)
