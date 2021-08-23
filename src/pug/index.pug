@@ -1,0 +1,81 @@
+extends layout.pug
+
+block variables
+	- var pageTitle = "Главная"
+
+		
+block content
+	div.content__wrapper#home-wrapper
+		section.content__section.content__section_type_main.content__section_type_display.main#main
+			div.container
+				div.main__wrapper
+					div.main__info
+						div.main__text
+							h1.main__title KOMPLEX INFO
+							p.main__subtitle Мы создаем продукт, который работает #[br]на процветание Вашего бизнеса
+						div.main__detail
+							div.main__detail-inner
+								p.main__description Работайте над задачами, а проблемы мы возьмем на себя
+								a.main__button.button(href="about-us.html") Подробнее
+					div.main__background-image
+						img.main__image(src="images/main-photo.jpg" alt="Задний фон")
+					div.main__social
+						a.main__link(href="https://www.facebook.com/KomplexInfo" target="_blank") @KomplexInfo
+		section.content__section.content__section_type_services.home-services#home-services
+			div.container
+				div.home-services__wrapper
+					h2.home-services__title ЧЕМ МЫ ЗАНИМАЕМСЯ
+					div.home-services__wrapper-carousel-small
+						div.home-services__carousel-small.carousel-small
+							each item, key in slide
+								div.carousel-small__item
+									img.carousel-small__image(src=`images/slide${(key!==4?key:1) + 1}-small.jpg` alt=item.alt)
+									h2(class="carousel-small__title")=item.title
+					div.home-services__wrapper-carousel-big
+						div.home-services__carousel-big.carousel-big
+							each item, key in slide
+								div
+									div.carousel-big__item
+										div.carousel-big__wrapper-image
+											div.carousel-big__image-block(class=key===0?'visible':'')
+												img.carousel-big__image(src=`images/slide${(key!==4?key:1) + 1}.jpg` alt=item.alt)
+										div.carousel-big__inner
+											div.carousel-big__wrapper-text.text-block
+												h2(class="carousel-big__title")=item.title
+												p=item.descr
+											a(class="button carousel-big__button" href=item.link) Подробнее
+						div.navigation
+							div.navigation__numbers
+								span.navigation__number(id='first-numbers') 01
+								div.navigation__delimiter
+								span.navigation__number(id='last-numbers') 
+							div.navigation__line
+								div.navigation__main-line
+								div.navigation__loading
+							div.navigation__arrows(id='slider-arrows')
+		section.content__section.content__section_type_result.result#result
+			div.container
+				div.text-block
+					h2.result__title МЫ НАЦЕЛЕНЫ НА РЕЗУЛЬТАТ
+					p.result__description С самого начала работы главная задача «Комплекс-Инфо» – разрабатывать и внедрять#[br]качественное программное обеспечение, которое отвечает задачам и развивает бизнес наших#[br]клиентов.
+				div.result__inner
+					div.result__block
+						div.result__item-top
+							span.result__number 14
+								span.result__unit лет
+							p.result__text на рынке информационных услуг
+						div.result__item-bottom.text-block
+							p “Комплекс-Инфо” - стабильная и процветающая компания. С 2006 года результативно работаем на рынке информационных технологий Нижнего Новгорода.
+					div.result__block
+						div.result__item-top
+							span.result__number 10
+								span.result__unit лет
+							p.result__text российского и зарубежного партнерства
+						div.result__item-bottom.text-block
+							p За это время нашими клиентами стали: Правительство Нижегородской области, Нижегородская торгово-промышленная палата, «Ростелеком», Microsoft Partner, «Каркас-Монолит», «VIP Технологии».
+					div.result__block
+						div.result__item-top
+							span.result__number >100
+							p.result__text успешных проектов
+						div.result__item-bottom.text-block
+							p От прошивки устройств до разработки встроенных приложений и создания оптимизированных программно- аппаратных комплексов различного уровня сложности.

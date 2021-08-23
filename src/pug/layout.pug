@@ -1,0 +1,23 @@
+include variables
+include mixins
+
+doctype html
+html(lang="ru")
+	block variables
+	head 
+		block head
+			meta(name='viewport', content='width=device-width, initial-scale=1')
+			meta(charset="UTF-8")
+			title #{pageTitle}
+			link(href="styles/main.min.css?v="+ versionFiles, rel="stylesheet")
+			
+
+	body
+		div.wrapper
+			include blocks/header
+			main.content
+				block content
+			if pageTitle !== "Главная"
+				include blocks/footer
+		block scripts
+			script(src="scripts/main.min.js?v=" + versionFiles)
