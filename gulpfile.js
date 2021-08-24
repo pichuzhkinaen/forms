@@ -93,7 +93,7 @@ gulp.task('watch',['browser-sync', 'pug', 'libscss', 'libsjs', 'styles', 'fonts'
     watch([path.watch.images], function(event) {
     	console.log( event.path );
         gulp.start('images');
-        browserSync.reload();
+        browserSync.reload({stream: true});
     });
     watch([path.watch.scripts], function(event) {
     	console.log( event.path );
@@ -108,19 +108,19 @@ gulp.task('watch',['browser-sync', 'pug', 'libscss', 'libsjs', 'styles', 'fonts'
     // Следим за файлами в build, чтобы обновить браузер
     watch([path.build.html+"**/*.html"], function(event) {
     	console.log( event.path );
-        browserSync.reload();
+        browserSync.reload({stream: true});
     });
     watch([path.build.styles+"**/*.css"], function(event) {
     	console.log( event.path );
-        browserSync.reload();
+        browserSync.reload({stream: true});
     });
     watch([path.build.fonts+"**/*.*"], function(event) {
     	console.log( event.path );
-        browserSync.reload();
+        browserSync.reload({stream: true});
     });
     watch([path.build.scripts+"**/*.js"], function(event) {
     	console.log( event.path );
-        browserSync.reload();
+        browserSync.reload({stream: true});
     });
 });
 

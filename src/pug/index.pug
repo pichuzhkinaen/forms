@@ -1,5 +1,3 @@
-include mixins
-
 doctype html
 html(lang="ru")
 	head 
@@ -13,37 +11,46 @@ html(lang="ru")
 	body
 		div.wrapper
 			form#form.form(action="")
-				div.form__group
-					label.form__input-label(for="name") Name
+				div.form__group-input
+					label.form__label(for="name") Name
 					input.form__input(type="text" id="name" name="name" placeholder="Jon Bold")
-				div.form__group
-					label.form__input-label(for="email") Email
+				div.form__group-input
+					label.form__label(for="email") Email
 					input.form__input(type="email" id="email" name="email" placeholder="email@email.com")
-				div.form__group
-					label.form__input-label(for="phone") Phone
+				div.form__group-input
+					label.form__label(for="phone") Phone
 					input.form__input(type="tel" id="phone" name="phone" placeholder="+7 (___) ___ - __ - __")
 				div.form__group
-					span.form__group-title checkbox
+					span.form__input-title Checkbox
 					div.form__checkbox-group
-						label.form__input-label(for="checkbox") option-1
-						input.form__input(type="checkbox" id="checkbox" name="option-1" value="option-1")
+						input.form__checkbox(type="checkbox" id="checkbox-1" name="option-1" value="option-1")
+						label.form__label(for="checkbox-1") option-1
 					div.form__checkbox-group
-						label.form__input-label(for="checkbox") option-2
-						input.form__input(type="checkbox" id="checkbox" name="option-2" value="option-2")
+						input.form__checkbox(type="checkbox" id="checkbox-2" name="option-2" value="option-2")
+						label.form__label(for="checkbox-2") option-2
 					div.form__checkbox-group
-						label.form__input-label(for="checkbox") option-3
-						input.form__input(type="checkbox" id="checkbox" name="option-2" value="option-3")
+						input.form__checkbox(type="checkbox" id="checkbox-3" name="option-2" value="option-3")
+						label.form__label(for="checkbox-3") option-3
 				div.form__group
-					span.form__group-title Radio
+					span.form__input-title Radio
 					div.form__radio-group
-						label.form__input-label(for="radio") option-1
-						input.form__input(type="radio" id="radio" name="option-1" value="option-1")
+						input.form__radio(type="radio" id="radio-1" name="option" value="option-1")
+						label.form__label(for="radio-1") option-1
 					div.form__radio-group
-						label.form__input-label(for="radio") option-2
-						input.form__input(type="radio" id="checkbox" name="option-2" value="option-2")
+						input.form__radio(type="radio" id="radio-2" name="option" value="option-2")
+						label.form__label(for="radio-2") option-2
 					div.form__radio-group
-						label.form__input-label(for="radio") option-3
-						input.form__input(type="radio" id="radio" name="option-2" value="option-3")
+						input.form__radio(type="radio" id="radio-3" name="option" value="option-3")
+						label.form__label(for="radio-3") option-3
+				div.form__group
+					select.form__select
+						option option-1
+						option option-2
+						option option-3
+				div.form__group
+					input.form__file(type="file" name="file")
+				input.form__submit(id="submit" type="submit")
+					
 
 		block scripts
 			script(src="scripts/main.min.js?v=" + versionFiles)

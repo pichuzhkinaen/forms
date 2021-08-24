@@ -1,0 +1,96 @@
+html, body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
+  background-color: #fff;
+  color: #000;
+  position: relative;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+img {
+  border: none;
+  max-width: 100%;
+}
+
+button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button:focus, button:active {
+  outline: 0px solid transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input.error {
+  -webkit-box-shadow: 0 0 2px 1px red;
+  box-shadow: 0 0 2px 1px red;
+}
+
+#workemail {
+  display: none;
+}
+
+.form {
+  max-width: 500px;
+  background-color: #ebf1f7;
+  border: 1px solid grey;
+  padding: 40px 30px;
+  margin: 50px auto 0;
+}
+
+.form__group {
+  margin-bottom: 15px;
+}
+
+.form__group-input {
+  margin-bottom: 15px;
+}
+
+.form__group-input > .form__label {
+  display: block;
+}
+
+.form__input-title {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form__gselect {
+  width: 100px;
+  height: 30px;
+  outline: none;
+}
+
+.form__input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  outline: none;
+}
+
+.form__label {
+  margin-bottom: 5px;
+}
+
+.form__submit {
+  display: block;
+  font-size: 16px;
+  color: #fff;
+  background-color: #517190;
+  border: 1px solid #486582;
+  padding: 7px 20px;
+  margin: 20px auto 0;
+}
