@@ -30,11 +30,14 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 input.error {
-	box-shadow: 0 0 2px 1px red;
+	border: 1px solid red;
 }
-
-#workemail{
-	display: none;
+.text-error {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	font-size: 12px;
+	color: red;
 }
 
 .form {
@@ -44,10 +47,11 @@ input.error {
 	padding: 40px 30px;
 	margin: 50px auto 0;
 	&__group {
-		margin-bottom: 15px;
+		margin-bottom: 24px;
 	}
 	&__group-input {
-		margin-bottom: 15px;
+		position: relative;
+		margin-bottom: 24px;
 		& > .form__label {
 			display: block;
 		}
