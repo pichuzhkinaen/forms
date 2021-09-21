@@ -89,6 +89,40 @@ $(document).ready(function() {
 		});
 	}
 
+
+    $("input[name='file']").on("change", function(e) {
+        e.preventDefault();
+		validateFile(this, e);
+    });
+    
+    function validateFile(fileInput, e) {
+
+        const sizeInput = fileInput.files[0].size,
+            nameFile = fileInput.files[0].name,
+            extensionFile = nameFile.substring(nameFile.lastIndexOf('.') + 1),
+            sizeMax = 50,
+            typeFile = ['doc', 'docx', 'pdf'];
+
+        if (sizeInput > sizeMax * 1024 * 1024) {
+            $(fileInput).after(`<span class="text-error">Размер файла превышает ${sizeMax} Мбайт.</span>`);
+            return false;
+        }
+ 
+        let valid = false;
+ 
+        for (let i = 0; i < typeFile.length; i++) {
+            if (extensionFile === typeFile[i]) {
+                valid = true;
+            }
+        }
+        if (valid) {
+            // fileInput.parents('.form__group').find('.form__file-name').text(e.target.files[0].name);
+        } else {
+
+            // $('.file-error').text(`Формат файла не поддерживается, допустимые форматы: Word и PDF`);
+        }
+    }
+
 		  
 	$('#submit').on('submit', function() {
 		e.preventDefault();

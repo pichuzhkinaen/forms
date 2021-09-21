@@ -51,6 +51,7 @@ input.error {
   margin: 50px auto 0;
 }
 .form__group {
+  position: relative;
   margin-bottom: 24px;
 }
 .form__group-input {
