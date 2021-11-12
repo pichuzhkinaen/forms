@@ -35,8 +35,18 @@ input::-webkit-inner-spin-button {
 }
 
 input.error {
+  border: none;
   -webkit-box-shadow: 0 0 2px 1px red;
   box-shadow: 0 0 2px 1px red;
+}
+
+.error-text {
+  position: absolute;
+  left: 0;
+  bottom: -18px;
+  font-size: 12px;
+  line-height: 16px;
+  color: red;
 }
 
 #workemail {
@@ -56,7 +66,8 @@ input.error {
 }
 
 .form__group-input {
-  margin-bottom: 15px;
+  position: relative;
+  margin-bottom: 30px;
 }
 
 .form__group-input > .form__label {

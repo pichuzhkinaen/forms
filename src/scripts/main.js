@@ -1,24 +1,32 @@
+// Реализация валидации полей и отправки формы на jQuery
 $(document).ready(function() {
-    
-	// const name = $('#name'),
-	// 	  email = $('#email'),
-	// 	  phone = $('#phone'),
-	// 	  checkbox = $('.form__checkbox'),
-	// 	  radio = $('.form__radio'),
-	// 	  select = $('.form__select'),
-	// 	  file = $('.form__file');
 
-	$('#name').on('blur', function() {
-		nameValidate(this);
+	// Валидация полей
+	$('#name').on('input', function() {
+		$(this).val($(this).val().replace(/[^a-zа-яё\s]/gi, ''));
 	});
 
-	function nameValidate(name) {
-		let pattern = /(^[A-Z]{1}[a-z]{1,14} [A-Z]{1}[a-z]{1,14}$)|(^[А-Я]{1}[а-я]{1,14} [А-Я]{1}[а-я]{1,14}$)/;
+	$('#name').on('blur', function(e) {
+		$(this).val($(this).val().trim());
+		checkLength(this.value.length, this);
+	});
 
-		name = name.match(pattern).trim();
-		console.log(name);
-	}
-		  
+
+	function checkLength(length, input) {
+        const msg = ((length === 1)) ? 'Имя должно быть не короче 2 символов' : '';
+
+		if ($('.error-text').length === 0) {
+			$(input).after(`<span class="error-text">${msg}</span>`);
+			$(input).addClass('error');
+		}
+        // input.setCustomValidity(msg); // Изменение браузерного сообщения, setCustomValidity работает только при отправке формы
+    }
+
+	// $('#email').on('blur', function() {
+	// 	const pattern = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/gm;
+	// });
+		 
+	//Отправка формы
 	$('#submit').on('submit', function() {
 		e.preventDefault();
 		console.log(111);
@@ -35,5 +43,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-
 });
+
+// Реализация валидации полей и отправки формы на native JavaScript
