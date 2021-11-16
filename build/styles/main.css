@@ -62,6 +62,7 @@ input.error {
 }
 
 .form__group {
+  position: relative;
   margin-bottom: 15px;
 }
 
@@ -103,5 +104,5 @@ input.error {
   background-color: #517190;
   border: 1px solid #486582;
   padding: 7px 20px;
-  margin: 20px auto 0;
+  margin: 40px auto 0;
 }
