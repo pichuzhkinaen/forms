@@ -26,7 +26,7 @@ $(document).ready(function() {
 	function checkLength(inputLength, input) {
         const msg = ((inputLength === 1)) ? 'Имя должно быть не короче 2 символов' : '';
 
-		if ($('.error-text').length === 0) {
+		if ($('.error-text').length === 0 && inputLength <= 1) {
 			$(input).after(`<span class="error-text">${msg}</span>`);
 			$(input).addClass('error');
 		}
@@ -75,22 +75,41 @@ $(document).ready(function() {
     }
 		 
 	//Отправка формы
-	$('#submit').on('submit', function() {
+	$('#form').on('submit', function(e) {
 		e.preventDefault();
-		console.log(111);
-
+		const formData = $(this).serialize(); //обходит форму и собирает названия и заполненные пользователем значения полей, и возвращает в виде массива – {login: 'ЗНАЧЕНИЯ_ПОЛЯ', password: 'ЗНАЧЕНИЯ_ПОЛЯ'}, формы по которым был клик игнорируются, можно применить только к тегу form и полям формы
+		ajaxRequest(formData);
+	});
+	
+	function ajaxRequest(formData) {
+		console.log(formData);
 		$.ajax({
-			type: 'POST',
-			url: 'request.php',
-			data: 1,
+			type: 'get',
+			url: '/request.php',
+			data: formData, //данные для отправки на сервер
+			// dataType : 'json', //формат данных, которые возвращает сервер
 			success: function(data) {
 				console.log(data);
 			},
-			error: function() {
+			error: function(data) {
 				console.log('error');
 			}
 		});
-	});
+		
+	}
+
+	// $.ajax({
+	// 	url: 'request.php',
+	// 	method: 'get',
+	// 	dataType: 'json',
+	// 	success: function(data){
+	// 		alert(data.text);    /* выведет "Текст" */
+	// 		alert(data.error);   /* выведет "Ошибка" */
+	// 	}
+	// });
+
+
+
 });
 
 // Реализация валидации полей и отправки формы на native JavaScript

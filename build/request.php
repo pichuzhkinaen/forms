@@ -1,8 +1,8 @@
 <?php
 
-$date =  $_POST['date'];
+$date =  $_GET['date'];
 
-if (isset($_POST['date'])) {
+if (isset($date)) {
     return $date .= 'Success';
 } else {
     return 'Error: Данные отсутствуют';
