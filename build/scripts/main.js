@@ -95,6 +95,7 @@ $(document).ready(function() {
 			data: formData, //данные для отправки на сервер
 			// dataType : 'json', //формат данных, которые возвращает сервер
 			success: function(data) {
+				openModal();
 				console.log(data);
 			},
 			error: function(data) {
@@ -104,15 +105,9 @@ $(document).ready(function() {
 		
 	}
 
-	// $.ajax({
-	// 	url: 'request.php',
-	// 	method: 'get',
-	// 	dataType: 'json',
-	// 	success: function(data){
-	// 		alert(data.text);    /* выведет "Текст" */
-	// 		alert(data.error);   /* выведет "Ошибка" */
-	// 	}
-	// });
+	function openModal() {
+		$('.modal').addClass('active');
+	}
 
 
 
