@@ -105,11 +105,28 @@ $(document).ready(function() {
 		
 	}
 
+	//Открытие и закрытие модального окна после отправки формы
 	function openModal() {
 		$('.modal').addClass('active');
 	}
 
+	$('.modal__close').on('click', function() {
+		$('.modal').removeClass('active');
+	});
 
+	$(document).on('click', function (e) {
+		if ($('.modal').hasClass('active')) {
+			closeModal(e);
+		}
+	});
+	
+	function closeModal(e) {
+		const div = $('.modal__inner');
+
+		if ( ! div.is(e.target) && div.has(e.target).length === 0) { // если клик был вне блока с сообщением и не по его дочерним элементам
+			$('.modal').removeClass('active');
+		}
+	}
 
 });
 

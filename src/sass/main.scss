@@ -90,6 +90,7 @@ input.error {
 		border: 1px solid #486582;
 		padding: 7px 20px;
 		margin: 40px auto 0;
+		cursor: pointer;
 	}
 }
 .modal {
@@ -101,6 +102,7 @@ input.error {
     height: 100vh;
     background-color: rgba(43, 42, 42, 0.452);
 	&__inner {
+		position: relative;
 		width: 400px;
 		height: 200px;
 		background-color: #fff;
@@ -114,5 +116,35 @@ input.error {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	&__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 7px;
+			right: 18px;
+			display: block;
+			width: 2px;
+			height: 24px;
+			background-color: #000;
+			transform: rotate(45deg);
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			top: 7px;
+			right: 18px;
+			display: block;
+			width: 2px;
+			height: 24px;
+			background-color: #000;
+			transform: rotate(-45deg);
+		}
 	}
 }
