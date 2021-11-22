@@ -49,13 +49,13 @@ var path = {
         scripts : "src/scripts/**/*.js",
     },
     build : {
-        html : "build/",
-        pug: "build/",
-        pug_src: "src/html/",
-        styles : "build/styles/",
-        scripts : "build/scripts/",
-        fonts : "build/fonts/",
-        images : "build/images/",
+        html : "/opt/lampp/htdocs/",
+        pug: "/opt/lampp/htdocs/",
+        pug_src: "/opt/lampp/htdocs/src/html/",
+        styles : "/opt/lampp/htdocs/styles/",
+        scripts : "/opt/lampp/htdocs/scripts/",
+        fonts : "/opt/lampp/htdocs/fonts/",
+        images : "/opt/lampp/htdocs/images/",
     },
     watch : {
         html : "src/html/**/*.html",
@@ -284,7 +284,7 @@ gulp.task('libsjs', function(){
 gulp.task('browser-sync', function() { // Создаем таск browser-sync
     browserSync({ // Выполняем browser Sync
     	server: { // Определяем параметры сервера
-            baseDir: 'build' // Директория для сервера - app
+            baseDir: '/opt/lampp/htdocs' // Директория для сервера - app
         },
         notify: true, // Включаем уведомления
         // proxy: "http://komplex-info-2020.local", // проксирование вашего удаленного сервера, не важно на чем back-end 
@@ -297,6 +297,7 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
         notify:    true,
         ghost:     true,
         files:     ['build'],*/
+		
     });
 });
 

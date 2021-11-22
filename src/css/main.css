@@ -32,15 +32,21 @@ input::-webkit-inner-spin-button {
 }
 
 input.error {
-  border: 1px solid red;
+  border: none;
+  box-shadow: 0 0 2px 1px red;
 }
 
-.text-error {
+.error-text {
   position: absolute;
-  top: 100%;
   left: 0;
+  bottom: -18px;
   font-size: 12px;
+  line-height: 16px;
   color: red;
+}
+
+#workemail {
+  display: none;
 }
 
 .form {
@@ -52,11 +58,11 @@ input.error {
 }
 .form__group {
   position: relative;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
 }
 .form__group-input {
   position: relative;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
 }
 .form__group-input > .form__label {
   display: block;
@@ -86,5 +92,62 @@ input.error {
   background-color: #517190;
   border: 1px solid #486582;
   padding: 7px 20px;
-  margin: 20px auto 0;
+  margin: 40px auto 0;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(43, 42, 42, 0.452);
+}
+.modal__inner {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
+  text-align: center;
+}
+.modal__text {
+  font-size: 20px;
+  line-height: 200px;
+}
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.modal__close::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 18px;
+  display: block;
+  width: 2px;
+  height: 24px;
+  background-color: #000;
+  transform: rotate(45deg);
+}
+.modal__close::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 18px;
+  display: block;
+  width: 2px;
+  height: 24px;
+  background-color: #000;
+  transform: rotate(-45deg);
 }/*# sourceMappingURL=main.css.map */

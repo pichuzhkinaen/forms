@@ -15,7 +15,7 @@ $(document).ready(function() {
 		checkEmail(this.value, this);
 	});
 
-	$("input[name='file']").on("change", function(e) {
+	$("input[name='file']").on('change', function(e) {
         e.preventDefault();
  
         const fileInput = $("input[name='file']");
@@ -49,7 +49,7 @@ $(document).ready(function() {
         const sizeInput = fileInput[0].files[0].size,
             nameFile = fileInput[0].files[0].name,
             extensionFile = nameFile.substring(nameFile.lastIndexOf('.') + 1),
-            sizeMax = 20,
+            sizeMax = 5,
             relType = ['doc', 'docx', 'pdf'];
 			
         if (sizeInput > sizeMax * 1024 * 1024) {
@@ -68,7 +68,6 @@ $(document).ready(function() {
         if (valid) {
 			$(fileInput).siblings('.error-text').remove();
         } else {
-            // $(fileInput).val('');
             $(fileInput).siblings('.error-text').remove();
             $(fileInput).after(`<span class="error-text">Формат файла не поддерживается, допустимые форматы: Word и PDF</span>`);
         }
@@ -82,26 +81,28 @@ $(document).ready(function() {
 	});
 	
 	function ajaxRequest(formData) {
-		console.log(formData);
+		// console.log(formData);
 		$.ajax({
 			type: 'get',
 			url: '/request.php',
 			data: formData, //данные для отправки на сервер
-			// dataType : 'json', //формат данных, которые возвращает сервер
 			success: function(data) {
-				openModal();
 				console.log(data);
+				$('#form')[0].reset(); //очистка всех полей формы
+				openModal();
 			},
 			error: function(data) {
 				console.log('error');
 			}
 		});
-		
 	}
 
 	//Открытие и закрытие модального окна после отправки формы
 	function openModal() {
 		$('.modal').addClass('active');
+		setTimeout(function() {
+			$('.modal').removeClass('active');
+		}, 3000);
 	}
 
 	$('.modal__close').on('click', function() {
@@ -121,6 +122,8 @@ $(document).ready(function() {
 			$('.modal').removeClass('active');
 		}
 	}
+
+
 
 });
 

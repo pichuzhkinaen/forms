@@ -95,14 +95,13 @@ $(document).ready(function() {
 			data: formData, //данные для отправки на сервер
 			// dataType : 'json', //формат данных, которые возвращает сервер
 			success: function(data) {
-				openModal();
 				console.log(data);
+				openModal();
 			},
 			error: function(data) {
 				console.log('error');
 			}
 		});
-		
 	}
 
 	//Открытие и закрытие модального окна после отправки формы
