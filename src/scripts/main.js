@@ -80,12 +80,30 @@ $(document).ready(function() {
 		ajaxRequest(formData);
 	});
 	
+	// function ajaxRequest(formData) {
+	// 	// console.log(formData);
+	// 	$.ajax({
+	// 		type: 'get',
+	// 		url: '/request.php',
+	// 		data: formData, //данные для отправки на сервер
+	// 		success: function(data) {
+	// 			console.log(data);
+	// 			$('#form')[0].reset(); //очистка всех полей формы
+	// 			openModal();
+	// 		},
+	// 		error: function(data) {
+	// 			console.log('error');
+	// 		}
+	// 	});
+	// }
+
 	function ajaxRequest(formData) {
 		// console.log(formData);
 		$.ajax({
-			type: 'get',
+			type: 'post',
 			url: '/request.php',
 			data: formData, //данные для отправки на сервер
+			// dataType : 'json', //формат данных, которые возвращает сервер
 			success: function(data) {
 				console.log(data);
 				$('#form')[0].reset(); //очистка всех полей формы
@@ -122,9 +140,6 @@ $(document).ready(function() {
 			$('.modal').removeClass('active');
 		}
 	}
-
-
-
 });
 
 // Реализация валидации полей и отправки формы на native JavaScript
