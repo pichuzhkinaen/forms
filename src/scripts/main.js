@@ -75,8 +75,12 @@ $(document).ready(function() {
 		 
 	//Отправка формы
 	$('#form').on('submit', function(e) {
-		e.preventDefault();
-		const formData = $(this).serialize(); //обходит форму и собирает названия и заполненные пользователем значения полей, и возвращает в виде массива – {login: 'ЗНАЧЕНИЯ_ПОЛЯ', password: 'ЗНАЧЕНИЯ_ПОЛЯ'}, формы по которым был клик игнорируются, можно применить только к тегу form и полям формы
+		e.preventDefault(); //после нажатия на кнопку submit форма каждый раз будет отправляться на сервер, чтобы данные проверялись на корректность перед отправкой
+		//const formData = $(this).serialize(); //обходит форму и собирает названия и заполненные пользователем значения полей, и возвращает в виде массива – {login: 'ЗНАЧЕНИЯ_ПОЛЯ', password: 'ЗНАЧЕНИЯ_ПОЛЯ'}, формы по которым был клик игнорируются, можно применить только к тегу form и полям формы. Данные из input type = "file" не сериализуются
+		// const formData = $('#name').val();
+
+		const formData = new FormData(e.target); //пары ключ-значение, из полей формы
+
 		ajaxRequest(formData);
 	});
 	
@@ -98,19 +102,31 @@ $(document).ready(function() {
 	// }
 
 	function ajaxRequest(formData) {
-		// console.log(formData);
+		
+		// const newFormData = [...formData];
+		// console.log(...formData);
+		for (let [key, value] of formData.entries()) { 
+			console.log(key, value);
+		}
+		
+		// const myJsonString = JSON.stringify(formData);
+
+		// console.log(myJsonString);
+
 		$.ajax({
 			type: 'post',
 			url: '/request.php',
-			data: formData, //данные для отправки на сервер
+			data: myJsonString, //данные для отправки на сервер
+			processData: false,
 			// dataType : 'json', //формат данных, которые возвращает сервер
+			// dataType: dataType,
 			success: function(data) {
-				console.log(data);
+				console.log('Данные с сервера пришли', data);
 				$('#form')[0].reset(); //очистка всех полей формы
 				openModal();
 			},
-			error: function(data) {
-				console.log('error');
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log('Ошибка получения ответа с сервера', jqXHR, textStatus, errorThrown);
 			}
 		});
 	}
