@@ -79,11 +79,12 @@ $(document).ready(function() {
 		//const formData = $(this).serialize(); //обходит форму и собирает названия и заполненные пользователем значения полей, и возвращает в виде массива – {login: 'ЗНАЧЕНИЯ_ПОЛЯ', password: 'ЗНАЧЕНИЯ_ПОЛЯ'}, формы по которым был клик игнорируются, можно применить только к тегу form и полям формы. Данные из input type = "file" не сериализуются
 		// const formData = $('#name').val();
 
-		const formData = new FormData(e.target); //пары ключ-значение, из полей формы
+		const formData = new FormData($(this)[0]); //пары ключ-значение, из полей формы
 
 		ajaxRequest(formData);
 	});
 	
+	// GET-запрос 
 	// function ajaxRequest(formData) {
 	// 	// console.log(formData);
 	// 	$.ajax({
@@ -101,27 +102,19 @@ $(document).ready(function() {
 	// 	});
 	// }
 
+	// POST-запрос
 	function ajaxRequest(formData) {
-		
-		// const newFormData = [...formData];
-		// console.log(...formData);
-		for (let [key, value] of formData.entries()) { 
-			console.log(key, value);
-		}
-		
-		// const myJsonString = JSON.stringify(formData);
-
-		// console.log(myJsonString);
+		// console.log(formData);
 
 		$.ajax({
-			type: 'post',
 			url: '/request.php',
-			data: myJsonString, //данные для отправки на сервер
-			processData: false,
-			// dataType : 'json', //формат данных, которые возвращает сервер
-			// dataType: dataType,
+			type: 'post',
+			data: formData, //данные для отправки на сервер
+			processData: false, // Не обрабатываем файлы (Don't process the files)
+			contentType: false, // Так jQuery скажет серверу что это строковой запрос
+			//dataType : 'json', //формат данных, которые возвращает сервер
 			success: function(data) {
-				console.log('Данные с сервера пришли', data);
+				console.log('Данные с сервера пришли: ', data);
 				$('#form')[0].reset(); //очистка всех полей формы
 				openModal();
 			},

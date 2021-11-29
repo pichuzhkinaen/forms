@@ -1,18 +1,18 @@
 <?php
 
-// print_r('OK');
-
-$data = $_POST['myJsonString'];
-
-// $data = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
-
-print_r($data);
-// print_r(json_encode($data));
-
-// // return 'OK';
-// if (isset($date)) {
-//     // return $date .= 'Success';
-//     return 'Данные получены';
-// } else {
-//     return 'Error: Данные отсутствуют';
-// }
+$formData = $_POST['formData'];
+if ($formData !== []) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $option1 = $_POST['option-1'];
+    $option2 = $_POST['option-2'];
+    $option3 = $_POST['option-1'];
+    $radio = $_POST['radio'];
+    $select = $_POST['select'];
+    $file = $_FILES['file']['name'];
+    
+    print_r("$name | $email | $phone | $option1 | $option2 | $option3 | $radio | $select | $file");
+} else {
+    print_r('error');
+}
