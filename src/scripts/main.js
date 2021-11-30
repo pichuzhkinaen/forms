@@ -86,6 +86,37 @@ $(document).ready(function() {
 			validFile = 0;
 		}
     }
+
+	// проставление маски на полe телефона
+	(function (){
+		let code = '+7',
+			find = /\+7/;
+		code = '+7';
+		find = /\+7/;
+
+		$("body").on("focus", "input[type=tel]", function(){
+			this.value = code + " " + this.value.replace(code + ' ', '');
+		});
+		$("body").on("input", "input[type=tel]", function(){
+			let val = this.value.replace(find, ''),
+				res = code + " ";
+			val = val.replace(/[^0-9]/g,'');
+
+			for(let i = 0; i < val.length; i++){
+				res += i === 0 ? ' (' : '';
+				res += i == 3 ? ') ' : '';
+				res += i== 6 || i == 8 ?' ' : '';
+				if(i == 10) break;
+				res += val[i];
+			}
+			this.value = res;
+		});
+		$("body").on("blur", "input[type=tel]", function(){
+			let val = this.value.replace(find,'');
+			val = val.trim();
+			if(!val) this.value = null;
+		});
+	})();
 		 
 	//Отправка формы
 	$('#form').on('submit', function(e) {
@@ -119,28 +150,28 @@ $(document).ready(function() {
 	// }
 
 	// POST-запрос
-	// function ajaxRequest(formData) {
-	// 	// console.log(formData);
-	// 	// console.log(validName, validEmail, validFile === 1);
-	// 	if (validName === 1 && validEmail === 1 && validFile === 1) {
-	// 		$.ajax({
-	// 			url: '/request.php',
-	// 			type: 'post',
-	// 			data: formData, //данные для отправки на сервер
-	// 			processData: false, // Не обрабатываем файлы (Don't process the files)
-	// 			contentType: false, // Так jQuery скажет серверу что это строковой запрос
-	// 			//dataType : 'json', //формат данных, которые возвращает сервер
-	// 			success: function(data) {
-	// 				console.log('Данные с сервера пришли: ', data);
-	// 				$('#form')[0].reset(); //очистка всех полей формы
-	// 				openModal();
-	// 			},
-	// 			error: function(jqXHR, textStatus, errorThrown) {
-	// 				console.log('Ошибка получения ответа с сервера', jqXHR, textStatus, errorThrown);
-	// 			}
-	// 		});
-	// 	}
-	// }
+	function ajaxRequest(formData) {
+		// console.log(formData);
+		// console.log(validName, validEmail, validFile === 1);
+		if (validName === 1 && validEmail === 1 && validFile === 1) {
+			$.ajax({
+				url: '/request.php',
+				type: 'post',
+				data: formData, //данные для отправки на сервер
+				processData: false, // Не обрабатываем файлы (Don't process the files)
+				contentType: false, // Так jQuery скажет серверу что это строковой запрос
+				//dataType : 'json', //формат данных, которые возвращает сервер
+				success: function(data) {
+					console.log('Данные с сервера пришли: ', data);
+					$('#form')[0].reset(); //очистка всех полей формы
+					openModal();
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log('Ошибка получения ответа с сервера', jqXHR, textStatus, errorThrown);
+				}
+			});
+		}
+	}
 
 	//Открытие и закрытие модального окна после отправки формы
 	function openModal() {
@@ -170,3 +201,15 @@ $(document).ready(function() {
 });
 
 // Реализация валидации полей и отправки формы на native JavaScript
+// const form = document.getElementById('#fopm'),
+// 	  userName = document.getElementById('#name'),
+// 	  email = document.getElementById('#email'),
+// 	  phone = document.getElementById('#phone'),
+// 	  file = document.querySelector("input[name='file']");
+
+// userName.addEventListener('input', functionN);
+// userName.addEventListener('blur', functionN);
+// email.addEventListener('blur', functionN);
+// phone.addEventListener('blur', functionN);
+
+// form.addEventListener('submit', functionN);
