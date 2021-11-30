@@ -1,5 +1,9 @@
 <?php
 
+// $formData = $_GET['formData'];
+
+// print_r('OK');
+
 $formData = $_POST['formData'];
 if ($formData !== []) {
     $name = $_POST['name'];
