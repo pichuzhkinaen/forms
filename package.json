@@ -1,7 +1,7 @@
 {
-  "name": "gulp",
+  "name": "forms",
   "version": "1.0.0",
-  "description": "",
+  "description": "Задача:",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,9 +12,6 @@
   },
   "author": "Alexandr Syreyschikov",
   "license": "ISC",
-  "bugs": {
-    "url": ""
-  },
   "homepage": "",
   "devDependencies": {
     "browser-sync": "^2.26.3",
@@ -35,5 +32,9 @@
     "gulp-watch": "^5.0.1",
     "imagemin-jpegoptim": "^6.0.0",
     "imagemin-pngquant": "^8.0.0"
+  },
+  "dependencies": {},
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   }
 }
